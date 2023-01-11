@@ -26,7 +26,7 @@ public class Main {
             System.out.println("Сколько еды необходимо насыпать котам? В мисочке помещается 200 единиц!");
             System.out.println("Сейчас в миске " + food + " единиц из 200!");
             int catFood = sc.nextInt();
-            if (catFood == 0) {
+            if (catFood == 0 && food == 0) {
                 System.out.println("Ты не способен кормить моих котиков! ТЫ УВОЛЕН!");
                 break;
             } else if (catFood < 0) {
@@ -43,24 +43,35 @@ public class Main {
         sc.close();
     }
 
-    private static int oopDemo(int catFood) {
+    public static int oopDemo(int catFood) {
         Plate plate = new Plate(catFood);
+
         Cat gav = new Cat("Gav", gavSatiety);
         gav.eat(plate);
-        catFood -= (100 - gavSatiety);
-        gavSatiety = 100;
+        if(catFood >= (100 - gavSatiety)) {
+            catFood -= (100 - gavSatiety);
+            gavSatiety = 100;
+        } else if (catFood > 0 && catFood < (100 - gavSatiety)) {
+            gavSatiety += catFood;
+            catFood = 0;
+        }
 
         Cat murzik = new Cat("Murzik", murzikSatiety);
         murzik.eat(plate);
-        catFood -= (100 - murzikSatiety);
-        murzikSatiety = 100;
-        System.out.println(plate);
+        if(catFood >= (100 - murzikSatiety)) {
+            catFood -= (100 - murzikSatiety);
+            murzikSatiety = 100;
+        } else if (catFood > 0 && catFood < (100 - murzikSatiety)) {
+            murzikSatiety += catFood;
+            catFood = 0;
+        }
+
         Random rand = new Random();
         gavSatiety -= rand.nextInt(0, 31);
         murzikSatiety -= rand.nextInt(0, 31);
         if (gavSatiety < 0) gavSatiety = 0;
         if (murzikSatiety < 0) murzikSatiety = 0;
-        System.out.println(catFood);
+        System.out.println(plate);
         return catFood;
     }
 

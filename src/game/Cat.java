@@ -1,7 +1,5 @@
 package game;
 
-import java.util.Objects;
-
 public class Cat {
 
     private final String name;
@@ -13,11 +11,12 @@ public class Cat {
     }
 
     public void eat(Plate plate) {
-        if (plate.decreaseFood(appetite) == 1) {
+        int currentNum = plate.decreaseFood(appetite);
+        if (currentNum == 1) {
             System.out.println(name + " сыт");
-        } else if (plate.decreaseFood(appetite) == 2) {
+        } else if (currentNum == 2) {
             System.out.println(name + " наелся");
-        } else if (plate.decreaseFood(appetite) == 3) {
+        } else if (currentNum == 3) {
             System.out.println(name + " не доел");
         } else {
             System.out.println(name + " остался совсем голодный");
