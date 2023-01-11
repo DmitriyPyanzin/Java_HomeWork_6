@@ -1,6 +1,6 @@
-package ru.gb.pet;
+package pet;
 
-public class Порода {
+public class Breed {
 
     String name;
 

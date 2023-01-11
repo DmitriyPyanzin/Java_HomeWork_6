@@ -1,4 +1,4 @@
-package ru.gb.pet;
+package pet;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -6,7 +6,7 @@ import java.time.temporal.ChronoUnit;
 public class Cat {
 
     LocalDate birthday; // дата рождения
-    Порода порода;
+    Breed breed;
     Sex sex; // пол
     PetOwner owner; // хозяин
 

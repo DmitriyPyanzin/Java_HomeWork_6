@@ -1,20 +1,31 @@
-package ru.gb.game;
+package game;
 
 public class Plate {
 
     private int currentFood; // количество еды, которое есть на текущий момент в тарелке
 
     public Plate(int currentFood) {
+
         this.currentFood = currentFood;
     }
 
-    public boolean decreaseFood(int foodCount) {
-        if (currentFood >= foodCount) {
-            currentFood -= foodCount;
-            return true;
+    public int decreaseFood(int appetite) {
+        if (appetite == 100) {
+            return 1;
+        } else if (currentFood >= (100 - appetite)) {
+            currentFood -= (100 - appetite);
+            return 2;
+        } else if (currentFood > 0 && currentFood < (100 - appetite)) {
+            currentFood = 0;
+            return 3;
+        } else {
+            return 4;
         }
-
-        return false;
     }
 
+    @Override
+    public String toString() {
+
+        return "Еды осталось [" + currentFood + "]";
+    }
 }

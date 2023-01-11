@@ -1,4 +1,4 @@
-package ru.gb.pet;
+package pet;
 
 public class PetOwner {
 
